@@ -3,36 +3,86 @@ import { colors } from "@/utils/colors";
 import { ArrowDownIcon } from "@chakra-ui/icons";
 import { Box, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import { MenuList } from "./MenuList";
 
 export const Landing = () => {
   return (
     <LandingContainer>
-      <Sub>FRONTEND DEVELOPER</Sub>
-      <HorizontalLine />
-      <Box p="40px" />  
-      <Box display="flex" alignItems="center" justifyContent="center" w="100%">
-        <MenuList />
-        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" w="100%" gap="40px">
-          <Box>
-            <Text fontSize="24px">안녕하세요.</Text>
-            <Text fontSize="18px"> <Text as="span" fontWeight="bold">프론트엔드 개발자 이민경</Text>입니다</Text>
-            <Text fontSize="18px">사용자와 가장 가까운 곳에서 < Text as="span" fontWeight="bold">더 나은 경험</Text>을 만들어가고 싶습니다.</Text>
-          </Box>
+      <motion.div
+        initial={{opacity: 0, y: 20}}
+        animate={{opacity: 1, y: 0}}
+        transition={{duration: 0.5}}
+        style={{width: "100%"}}
+      >
+        <Sub>FRONTEND DEVELOPER</Sub>
+        <HorizontalLine />
+      </motion.div>
+      <Box p="40px" />
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        w="100%"
+        gap="40px"
+      >
+        <motion.div
+          initial={{opacity: 0, x: -20}}
+          animate={{opacity: 1, x: 0}}
+          transition={{duration: 0.5}}
+        >
+          <MenuList />
+        </motion.div>
+        <motion.div
+          initial={{opacity: 0, x: 20}}
+          animate={{opacity: 1, x: 0}}
+          transition={{duration: 0.5}}
+        >
           <Box
-          w="50px"
-          h="50px"
-          bg="white"
-          transform="rotate(45deg)" 
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          border="3px solid black"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            w="100%"
+            gap="40px"
           >
-          <ArrowDownIcon w="50px" h="50px" color="black" transform="rotate(-45deg)" />
-        </Box>
-        </Box>
-        </Box>
+            <Box>
+              <Text fontSize="24px">안녕하세요.</Text>
+              <Text fontSize="18px">
+                {" "}
+                <Text as="span" fontWeight="bold">
+                  프론트엔드 개발자 이민경
+                </Text>
+                입니다
+              </Text>
+              <Text fontSize="18px">
+                사용자와 가장 가까운 곳에서{" "}
+                <Text as="span" fontWeight="bold">
+                  더 나은 경험
+                </Text>
+                을 만들어가고 싶습니다.
+              </Text>
+            </Box>
+            <Box
+              w="50px"
+              h="50px"
+              bg="white"
+              transform="rotate(45deg)"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              border="3px solid black"
+            >
+              <ArrowDownIcon
+                w="50px"
+                h="50px"
+                color="black"
+                transform="rotate(-45deg)"
+              />
+            </Box>
+          </Box>
+        </motion.div>
+      </Box>
       <WaveWrapper>
         <WaveSVG className="wave wave1" />
         <WaveSVG className="wave wave2" />
