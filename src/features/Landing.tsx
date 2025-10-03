@@ -15,9 +15,9 @@ export const Landing = () => {
         <MenuList />
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" w="100%" gap="40px">
           <Box>
-            <Text fontSize="24px" fontWeight="bold">안녕하세요.</Text>
-            <Text fontSize="16px"> 프론트엔드 개발자 이민경입니다</Text>
-            <Text fontSize="16px">사용자와 가장 가까운 곳에서 더 나은 경험을 만들어가고 싶습니다.</Text>
+            <Text fontSize="24px">안녕하세요.</Text>
+            <Text fontSize="18px"> <Text as="span" fontWeight="bold">프론트엔드 개발자 이민경</Text>입니다</Text>
+            <Text fontSize="18px">사용자와 가장 가까운 곳에서 < Text as="span" fontWeight="bold">더 나은 경험</Text>을 만들어가고 싶습니다.</Text>
           </Box>
           <Box
           w="50px"
