@@ -1,13 +1,12 @@
 "use client";
 import { Anchor } from "@/components/Anchor/Anchor";
 import { RoundBox } from "@/components/RoundBox/RoundBox";
+import { ScrollUpCard } from "@/components/ScrollUpCard/ScrollUpCard";
 import { colors } from "@/utils/colors";
 import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { MdMoreHoriz } from "@react-icons/all-files/md/MdMoreHoriz";
-import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
 
 const AboutTexts = () => {
   return (
@@ -44,28 +43,9 @@ const DescriptionText = styled.p`
   line-height: 1.2;
 `;
 
-export const ScrollUpCard = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
+export const ProfileContent = () => {
   return (
-    <motion.div
-      ref={ref}
-      initial={{ y: 0, opacity: 0 }}
-      animate={isInView ? { y: 0, opacity: 1 } : {}}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: colors.background.light,
-        borderRadius: "30px",
-        margin: "-30px auto",
-        display: "flex",
-        padding: "50px",
-        fontWeight: 600,
-        flexDirection: "column",
-      }}
-    >
+    <ScrollUpCard>
       <Anchor />
       <Box height="36px" />
       <AboutText>
@@ -87,14 +67,14 @@ export const ScrollUpCard = () => {
         <AboutTexts />
         </Box>
       </HStack>
-    </motion.div>
+    </ScrollUpCard>
   );
 };
 
 export const Profile = () => {
   return (
   <Container>
-    <ScrollUpCard />
+    <ProfileContent />
   </Container>
   )
 }
