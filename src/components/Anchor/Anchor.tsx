@@ -14,8 +14,8 @@ export const Anchor = () => {
       fontFamily="Aggravo"
       fontSize="24px"
     >
-      <Icon as={LinkIcon} width="24px" height="24px" fontWeight="bold"s />
-      <Text>ABOUT</Text>
+      <Icon as={LinkIcon} width="24px" height="24px" fontWeight="bold" />
+      <Text style={{ fontSize: "24px", marginTop: "4px" }}>ABOUT</Text>
     </HStack>
   )
 }
