@@ -59,7 +59,7 @@ export const ImageSlider = ({ images }: ImageSliderProps) => {
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
           style={{
             position: "absolute",
             width: "100%",
