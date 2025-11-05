@@ -6,7 +6,7 @@ interface PaddedBoxProps {
 
 export const PaddedBox = ({ children }: PaddedBoxProps) => {
   return (
-    <Box padding="0 12vw">
+    <Box padding="0 15vw">
       {children}
     </Box>
   )

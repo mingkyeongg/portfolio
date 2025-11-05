@@ -1,10 +1,9 @@
 import { Anchor } from "@/components/Anchor/Anchor";
 import { FlipCard } from "@/components/FlipCard/FlipCard";
-import { ImageSlider } from "@/components/ImageSlider/ImageSlider";
 import { PaddedBox } from "@/components/PaddedBox/PaddedBox";
-import { ProjectTemplete } from "@/components/ProjectTemplete/ProjectTemplete";
+import { ProjectBackCard, ProjectFrontCard } from "@/components/ProjectTemplete/ProjectTemplete";
 import { colors } from "@/utils/colors";
-import { Box, Grid, Text } from "@chakra-ui/react";
+import { Box, Grid, List, Text } from "@chakra-ui/react";
 
 export const Project = () => {
   return (
@@ -30,25 +29,11 @@ export const Project = () => {
         <Grid templateColumns="repeat(2, 1fr)" gap="24px" width="100%">
           <FlipCard
             front={
-              <ProjectTemplete
+              <ProjectFrontCard
                 imageSrc="/images/projects/hearo-main.png"
                 title="Hearo"
                 period="2025.04 - 2025.11"
                 introduction="청각 제약 상황을 위한 실내 소리 인식 및 상황감지 시스템"
-                content={
-                  <Text
-                    fontFamily="Pretendard"
-                    fontSize="16px"
-                    fontWeight="400"
-                    style={{color: colors.text.black}}
-                  >
-                    부산대학교 2025 학년도 전기 졸업과제로 진행한
-                    프로젝트입니다. <br />
-                    진해노인종합복지관 202명의 설문조사로 요구사항을 도출하여{" "}
-                    <br />
-                    기능 정의에 활용하였습니다.
-                  </Text>
-                }
                 people="3명"
                 role="앱 & 로봇 개발자"
                 techStack="iOS (XCode), Swift, ROS2 Humble, Raspberry pi 5, Python, C++, Mosquitto"
@@ -68,18 +53,38 @@ export const Project = () => {
               />
             }
             back={
-              <>
-                <ImageSlider images={[
+              <ProjectBackCard
+                content={
+                  <Text
+                    fontFamily="Pretendard"
+                    fontSize="16px"
+                    fontWeight="400"
+                    style={{color: colors.text.black}}
+                  >
+                    부산대학교 2025 학년도 전기 졸업과제로 진행한
+                    프로젝트입니다. <br />
+                    진해노인종합복지관 202명의 설문조사로 요구사항을 도출하여{" "}
+                    <br />
+                    기능 정의에 활용하였습니다.
+                  </Text>
+                }
+                implementation={
+                  <List.Root>
+                    <List.Item>설문조사 기반 요구사항 도출 및 기능 정의</List.Item>
+                    <List.Item>Swift 기반 iOS 앱 UI/UX 설계 및 구현</List.Item>
+                    <List.Item>ROS2 Humble 기반 로봇 자율주행 시스템 개발</List.Item>
+                    <List.Item>MQTT를 통한 로봇-앱 간 실시간 데이터 통신 구현</List.Item>
+                  </List.Root>
+                }
+                images={[
                   "/images/projects/hearo-main.png",
                   "/images/projects/hearo-main.png",
-                  "/images/projects/hearo-main.png",
-                  "/images/projects/hearo-main.png",
-                ]} />
-              </>
+                ]}
+              />
             }
           />
 
-          <ProjectTemplete
+          <ProjectFrontCard
             imageSrc="/images/projects/exitmate-main.png"
             title="ExitMate"
             period="2025.06 - 2025.09"
@@ -109,7 +114,7 @@ export const Project = () => {
               {text: "More", href: "https://www.more.com"},
             ]}
           />
-          <ProjectTemplete
+          <ProjectFrontCard
             imageSrc="/images/projects/glitter-main.png"
             title="반짝이맵"
             period="2025.03 - 2025.05"
@@ -141,7 +146,7 @@ export const Project = () => {
               },
             ]}
           />
-          <ProjectTemplete
+          <ProjectFrontCard
             imageSrc="/images/projects/codemonster-main.png"
             title="CodeMonster"
             period="2025.01 - "

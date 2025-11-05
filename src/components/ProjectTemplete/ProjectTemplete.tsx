@@ -4,10 +4,11 @@ import { Box, HStack, Icon, Text } from "@chakra-ui/react";
 import { MdBuild } from "@react-icons/all-files/md/MdBuild";
 import { MdPerson } from "@react-icons/all-files/md/MdPerson";
 import Image from "next/image";
+import { ImageSlider } from "../ImageSlider/ImageSlider";
 import { ProjectTypeBadge } from "../ProjectKindBadge/ProjectTypeBadge";
 import { ProjectLinkBadge } from "../ProjectLinkBadge/ProjectLinkBadge";
 
-interface ProjectTempleteProps {
+interface ProjectFrontCardProps {
   imageSrc: string;
   title: string;
   period: string;
@@ -15,7 +16,6 @@ interface ProjectTempleteProps {
   people: string;
   role: string;
   techStack: string;
-  content: React.ReactNode;
   projectType: "Web" | "Mobile" | "etc" | ("Web" | "Mobile" | "etc")[];
   projectLinkBadges: {
     text: "Youtube" | "Github" | "Website" | "More" | "AppStore";
@@ -23,7 +23,7 @@ interface ProjectTempleteProps {
   }[];
 }
 
-export const ProjectTemplete = ({
+export const ProjectFrontCard = ({
   imageSrc,
   title,
   period,
@@ -31,10 +31,9 @@ export const ProjectTemplete = ({
   people,
   role,
   techStack,
-  content,
   projectType,
   projectLinkBadges,
-}: ProjectTempleteProps) => {
+}: ProjectFrontCardProps) => {
   return (
     <Box
       width="100%"
@@ -91,7 +90,6 @@ export const ProjectTemplete = ({
             {introduction}
           </Text>
         </HStack>
-        <Box mt="12px">{content}</Box>
         <HStack align="center" justify="flex-start" gap="12px">
           <Icon as={MdPerson} width="20px" height="20px" color={colors.text.gray} />
           <Text fontFamily="Pretendard" fontSize="16px" fontWeight="400">
@@ -122,6 +120,63 @@ export const ProjectTemplete = ({
           {projectLinkBadges.map((badge) => (
             <ProjectLinkBadge key={badge.text} text={badge.text} href={badge.href} />
           ))}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+interface ProjectBackCardProps {
+  images: string[];
+  content: React.ReactNode;
+  implementation: React.ReactNode;
+}
+
+export const ProjectBackCard = ({
+  images,
+  content,
+  implementation,
+}: ProjectBackCardProps) => { 
+  return (
+    <Box
+      width="100%"
+      height="100%"
+      display="flex"
+      flexDirection="column"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      overflow="hidden"
+      borderRadius="16px"
+      border={`2px solid ${colors.background.dark}`}
+      boxShadow="0 6px 15px rgba(0,0,0,0.15)"
+    >
+      <Box  
+        width="100%"
+        height="250px"
+        borderBottom={`2px solid ${colors.background.dark}`}
+        overflow="hidden"
+      >
+        <ImageSlider images={images} />
+      </Box>
+
+      <Box
+        width="100%"
+        px="24px"
+        py="16px"
+      >
+        <Text fontFamily="Aggravo" fontSize="18px" fontWeight="600" mb="8px">
+          프로젝트 개요
+        </Text>
+        <Box fontFamily="Pretendard" fontSize="15px" fontWeight="400">
+          {content}
+        </Box>
+      </Box>
+      <Box width="100%" px="24px" py="16px" bg="white">
+        <Text fontFamily="Aggravo" fontSize="18px" fontWeight="600" mb="8px">
+          구현 내용
+        </Text>
+        <Box padding="0 12px">
+          {implementation}
         </Box>
       </Box>
     </Box>

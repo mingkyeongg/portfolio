@@ -42,7 +42,7 @@ export const ImageSlider = ({ images }: ImageSliderProps) => {
     <Box
       className="no-flip"
       width="100%"
-      height="400px"
+      height="100%"
       position="relative"
       display="flex"
       alignItems="center"
@@ -92,8 +92,8 @@ export const ImageSlider = ({ images }: ImageSliderProps) => {
           onClick={prev}
           borderRadius="full"
           size="sm"
-          backgroundColor="rgba(255,255,255,0.6)"
-          _hover={{ backgroundColor: "rgba(255,255,255,0.8)" }}
+          backgroundColor="rgba(0,0,0,0.6)"
+          _hover={{ backgroundColor: "rgba(0,0,0,0.8)" }}
         >
           <FaArrowLeft className="no-flip"/>
         </Button>
@@ -102,8 +102,8 @@ export const ImageSlider = ({ images }: ImageSliderProps) => {
           onClick={next}
           borderRadius="full"
           size="sm"
-          backgroundColor="rgba(255,255,255,0.6)"
-          _hover={{ backgroundColor: "rgba(255,255,255,0.8)" }}
+          backgroundColor="rgba(0,0,0,0.6)"
+          _hover={{ backgroundColor: "rgba(0,0,0,0.8)" }}
         >
           <FaArrowRight className="no-flip"/>
         </Button>
