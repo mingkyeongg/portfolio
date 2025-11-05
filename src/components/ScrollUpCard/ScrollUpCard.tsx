@@ -24,7 +24,7 @@ export const ScrollUpCard = ({ children, backgroundColor = colors.background.lig
         borderRadius: "30px",
         margin: "-30px auto",
         display: "flex",
-        padding: "50px",
+        padding: "50px 0",
         fontWeight: 600,
         flexDirection: "column",
       }}

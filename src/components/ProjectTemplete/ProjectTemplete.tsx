@@ -18,7 +18,7 @@ interface ProjectTempleteProps {
   content: React.ReactNode;
   projectType: "Web" | "Mobile" | "etc" | ("Web" | "Mobile" | "etc")[];
   projectLinkBadges: {
-    text: "Youtube" | "Github" | "Website" | "More";
+    text: "Youtube" | "Github" | "Website" | "More" | "AppStore";
     href: string;
   }[];
 }
@@ -85,7 +85,7 @@ export const ProjectTemplete = ({
           </Text>
         </HStack>
         <HStack align="center" justify="flex-start" gap="12px">
-          <Box width="4px" height="24px" backgroundColor={colors.text.gray} />
+          <Box width="4px" height="24px" backgroundColor={colors.background.dark} />
           <Text fontFamily="Pretendard" fontSize="16px" fontWeight="400">
             {introduction}
           </Text>

@@ -1,5 +1,6 @@
 "use client";
 import { Anchor } from "@/components/Anchor/Anchor";
+import { PaddedBox } from "@/components/PaddedBox/PaddedBox";
 import { ScrollUpCard } from "@/components/ScrollUpCard/ScrollUpCard";
 import { SkillBox } from "@/components/SkillBox/SkillBox";
 import { colors } from "@/utils/colors";
@@ -38,6 +39,7 @@ export const Skills = () => {
   return (
     <Container>
       <ScrollUpCard backgroundColor={colors.background.dark}>
+        <PaddedBox>
         <Anchor text="SKILLS" href="#skills" color={colors.background.light} />
         <Box height="24px" />
         <Box height="4px" width="100%" backgroundColor={colors.background.light} />
@@ -52,6 +54,7 @@ export const Skills = () => {
             <SkillBox key={skill.title} title={skill.title} description={skill.description} />
           ))}
         </Grid>
+        </PaddedBox>
       </ScrollUpCard>
     </Container>
   )
