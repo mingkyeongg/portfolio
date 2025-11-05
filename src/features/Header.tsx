@@ -1,5 +1,6 @@
 import { colors } from "@/utils/colors";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const Header = () => {
   return (
@@ -8,10 +9,10 @@ export const Header = () => {
           <span>LEE MINKYEONG</span>
         </HeaderTitle>
         <HeaderMenu>
-          <HeaderMenuItem>ABOUT</HeaderMenuItem>
-          <HeaderMenuItem>SKILLS</HeaderMenuItem>
-          <HeaderMenuItem>PROJECTS</HeaderMenuItem>
-          <HeaderMenuItem>CONTACT</HeaderMenuItem>
+          <HeaderMenuItem as={Link} href="#about">ABOUT</HeaderMenuItem>
+          <HeaderMenuItem as={Link} href="#skills">SKILLS</HeaderMenuItem>
+          <HeaderMenuItem as={Link} href="#projects">PROJECTS</HeaderMenuItem>
+          <HeaderMenuItem as={Link} href="#contact">CONTACT</HeaderMenuItem>
         </HeaderMenu>
     </HeaderContainer>
   );

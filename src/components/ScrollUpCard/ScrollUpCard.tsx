@@ -1,11 +1,13 @@
+"use client";
 import { colors } from "@/utils/colors";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 interface ScrollUpCardProps {
   children: React.ReactNode;
+  backgroundColor?: string;
 }
-export const ScrollUpCard = ({ children }: ScrollUpCardProps) => {
+export const ScrollUpCard = ({ children, backgroundColor = colors.background.light }: ScrollUpCardProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -18,7 +20,7 @@ export const ScrollUpCard = ({ children }: ScrollUpCardProps) => {
       style={{
         width: "100%",
         height: "100%",
-        backgroundColor: colors.background.light,
+        backgroundColor: backgroundColor,
         borderRadius: "30px",
         margin: "-30px auto",
         display: "flex",

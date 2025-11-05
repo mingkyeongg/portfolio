@@ -46,7 +46,7 @@ const DescriptionText = styled.p`
 export const ProfileContent = () => {
   return (
     <ScrollUpCard>
-      <Anchor />
+      <Anchor text="ABOUT" href="#about" />
       <Box height="36px" />
       <AboutText>
         <p>안녕하세요</p>
@@ -86,9 +86,9 @@ const Container = styled.div`
 `;  
 
 const AboutText = styled.div`
-  font-size: 30px;
+  font-size: 24px;
   font-family: 'Aggravo';
   font-weight: 300;
   color: ${colors.text.black};
-  line-height: 1.5;
+  line-height: 1.2;
 `;
