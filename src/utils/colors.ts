@@ -11,5 +11,6 @@ export const colors = {
   background: {
     dark: '#2C2C2E',
     light: '#FFFFFF',
+    yellow: '#FFCC00',
   },
 }

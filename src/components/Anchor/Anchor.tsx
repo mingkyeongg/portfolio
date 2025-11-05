@@ -1,3 +1,5 @@
+"use client";
+
 import { colors } from "@/utils/colors";
 import { LinkIcon } from "@chakra-ui/icons";
 import { HStack, Icon, Text } from "@chakra-ui/react";
