@@ -4,6 +4,8 @@ import { Box, HStack, Icon, Text } from "@chakra-ui/react";
 import { MdBuild } from "@react-icons/all-files/md/MdBuild";
 import { MdPerson } from "@react-icons/all-files/md/MdPerson";
 import Image from "next/image";
+import { ProjectTypeBadge } from "../ProjectKindBadge/ProjectTypeBadge";
+import { ProjectLinkBadge } from "../ProjectLinkBadge/ProjectLinkBadge";
 
 interface ProjectTempleteProps {
   imageSrc: string;
@@ -14,6 +16,11 @@ interface ProjectTempleteProps {
   role: string;
   techStack: string;
   content: React.ReactNode;
+  projectType: "Web" | "Mobile" | "etc" | ("Web" | "Mobile" | "etc")[];
+  projectLinkBadges: {
+    text: "Youtube" | "Github" | "Website" | "More";
+    href: string;
+  }[];
 }
 
 export const ProjectTemplete = ({
@@ -25,6 +32,8 @@ export const ProjectTemplete = ({
   role,
   techStack,
   content,
+  projectType,
+  projectLinkBadges,
 }: ProjectTempleteProps) => {
   return (
     <Box
@@ -62,6 +71,11 @@ export const ProjectTemplete = ({
         flexDirection="column"
         gap="8px"
       >
+        {Array.isArray(projectType) ? projectType.map((type) => (
+          <ProjectTypeBadge key={type} text={type as "Web" | "Mobile" | "etc"} />
+        )) : (
+          <ProjectTypeBadge text={projectType as "Web" | "Mobile" | "etc"} />
+        )}
         <HStack align="center" justify="flex-start" gap="12px">
           <Text fontFamily="Aggravo" fontSize="24px" fontWeight="600">
             {title}
@@ -102,6 +116,11 @@ export const ProjectTemplete = ({
             textOverflow: "ellipsis",}}>
             {techStack}
           </Text>
+        </Box>
+        <Box width="100%" height="fit-content" display="flex" alignItems="center" justifyContent="flex-start" gap="12px">
+          {projectLinkBadges.map((badge) => (
+            <ProjectLinkBadge key={badge.text} text={badge.text} href={badge.href} />
+          ))}
         </Box>
       </Box>
     </Box>

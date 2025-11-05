@@ -13,4 +13,9 @@ export const colors = {
     light: '#FFFFFF',
     yellow: '#FFCC00',
   },
+  kind: {
+    web: '#30D158',
+    mobile: '#0088FF',
+    etc: '#FF9500',
+  },
 }
