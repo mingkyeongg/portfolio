@@ -1,6 +1,6 @@
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { ProjectTemplete } from '../ProjectTemplete/ProjectTemplete';
+import { ProjectFrontCard } from '../ProjectTemplete/ProjectTemplete';
 import { FlipCard } from './FlipCard';
 
 const meta: Meta<typeof FlipCard> = {
@@ -19,24 +19,23 @@ export default meta;
 export const Default: StoryObj<typeof FlipCard> = {
   args: {
     front: <>
-    <ProjectTemplete
-    imageSrc="/images/projects/hearo-main.png"
-    title="Hearo"
-    period="2025.04 - 2025.11"
-    introduction="청각 제약 상황을 위한 실내 소리 인식 및 상황감지 시스템"
-    people="3명"
-    role="앱 & 로봇 개발자"
-    techStack="iOS (XCode), Swift, ROS2 Humble, Raspberry pi 5, Python, C++, Mosquitto"
-    content={<div>
-      <h1>TiltCard</h1>
-    </div>}
-    projectType="etc"
-    projectLinkBadges={[
-      {text: "Youtube", href: "https://www.youtube.com/watch?v=bWdz_H-KRW0&t=1s"},
-      {text: "Github", href: "https://github.com/orgs/Project-Hearo/repositories"},
-      {text: "Website", href: "https://www.website.com"},
-      {text: "More", href: "https://www.more.com"},
-    ]}
+    <ProjectFrontCard
+    project={{
+      imageSrc: "/images/projects/hearo-main.png",
+      title: "Hearo",
+      period: "2025.04 - 2025.11",
+      introduction: "청각 제약 상황을 위한 실내 소리 인식 및 상황감지 시스템",
+      people: "3명",
+      projectType: "etc",
+      projectLinkBadges: [
+        {text: "Youtube", href: "https://www.youtube.com/watch?v=bWdz_H-KRW0&t=1s"},
+        {text: "Github", href: "https://github.com/orgs/Project-Hearo/repositories"},
+        {text: "Website", href: "https://www.website.com"},
+        {text: "More", href: "https://www.more.com"},
+      ],
+      role: "앱 & 로봇 개발자",
+      techStack: "iOS (XCode), Swift, ROS2 Humble, Raspberry pi 5, Python, C++, Mosquitto",
+    }}  
     />  
     </>
     ,

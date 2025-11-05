@@ -1,6 +1,7 @@
 "use client";
+import { ProjectBackType, ProjectFrontType } from "@/types/projects";
 import { colors } from "@/utils/colors";
-import { Box, HStack, Icon, Text } from "@chakra-ui/react";
+import { Box, HStack, Icon, List, Text } from "@chakra-ui/react";
 import { MdBuild } from "@react-icons/all-files/md/MdBuild";
 import { MdPerson } from "@react-icons/all-files/md/MdPerson";
 import Image from "next/image";
@@ -9,31 +10,14 @@ import { ProjectTypeBadge } from "../ProjectKindBadge/ProjectTypeBadge";
 import { ProjectLinkBadge } from "../ProjectLinkBadge/ProjectLinkBadge";
 
 interface ProjectFrontCardProps {
-  imageSrc: string;
-  title: string;
-  period: string;
-  introduction: string;
-  people: string;
-  role: string;
-  techStack: string;
-  projectType: "Web" | "Mobile" | "etc" | ("Web" | "Mobile" | "etc")[];
-  projectLinkBadges: {
-    text: "Youtube" | "Github" | "Website" | "More" | "AppStore";
-    href: string;
-  }[];
+  project: ProjectFrontType;
 }
 
 export const ProjectFrontCard = ({
-  imageSrc,
-  title,
-  period,
-  introduction,
-  people,
-  role,
-  techStack,
-  projectType,
-  projectLinkBadges,
+  project,
 }: ProjectFrontCardProps) => {
+  console.log(project);
+  const { imageSrc, title, period, introduction, people, role, techStack, projectType, projectLinkBadges } = project;
   return (
     <Box
       width="100%"
@@ -127,16 +111,13 @@ export const ProjectFrontCard = ({
 };
 
 interface ProjectBackCardProps {
-  images: string[];
-  content: React.ReactNode;
-  implementation: React.ReactNode;
+  project: ProjectBackType;
 }
 
 export const ProjectBackCard = ({
-  images,
-  content,
-  implementation,
+  project,
 }: ProjectBackCardProps) => { 
+  const { images, content, implementation } = project;
   return (
     <Box
       width="100%"
@@ -168,7 +149,9 @@ export const ProjectBackCard = ({
           프로젝트 개요
         </Text>
         <Box fontFamily="Pretendard" fontSize="15px" fontWeight="400">
-          {content}
+            {content.map((item) => (
+              <Text key={item}>{item}</Text>
+            ))}
         </Box>
       </Box>
       <Box width="100%" px="24px" py="16px" bg="white">
@@ -176,7 +159,11 @@ export const ProjectBackCard = ({
           구현 내용
         </Text>
         <Box padding="0 12px">
-          {implementation}
+          <List.Root>
+            {implementation.map((item) => (
+              <List.Item key={item}>{item}</List.Item>
+            ))}
+          </List.Root>
         </Box>
       </Box>
     </Box>

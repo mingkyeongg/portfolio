@@ -21,49 +21,37 @@ export const FlipCard = ({ front, back }: FlipCardProps) => {
   return (
     <motion.div
       onClick={handleClick}
+      animate={{ rotateY: flipped ? 180 : 0 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      style={{
+        width: "100%",
+        position: "relative",
+        transformStyle: "preserve-3d",
+      }}
     >
       <motion.div
-        animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
         style={{
           width: "100%",
-          height: "100%",
-          position: "relative",
-          transformStyle: "preserve-3d",
+          backfaceVisibility: "hidden",
+          borderRadius: "20px",
         }}
       >
-        <motion.div
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            backfaceVisibility: "hidden",
-            borderRadius: "20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            pointerEvents: flipped ? "none" : "auto",
-          }}
-        >
-          {front}
-        </motion.div>
+        {front}
+      </motion.div>
 
-        <motion.div
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            backfaceVisibility: "hidden",
-            transform: "rotateY(180deg)",
-            borderRadius: "20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            pointerEvents: flipped ? "auto" : "none",
-          }}
-        >
-          {back}
-        </motion.div>
+      <motion.div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backfaceVisibility: "hidden",
+          transform: "rotateY(180deg)",
+          borderRadius: "20px",
+        }}
+      >
+        {back}
       </motion.div>
     </motion.div>
   );
