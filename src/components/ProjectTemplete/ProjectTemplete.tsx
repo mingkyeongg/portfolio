@@ -47,7 +47,8 @@ export const ProjectTemplete = ({
       overflow="hidden"
       style={{
         borderRadius: "16px",
-        border: `3px solid ${colors.background.dark}`,
+        border: `2px solid ${colors.background.dark}`,
+        boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)",
       }}
     >
       <Box position="relative" width="100%" height="250px">
