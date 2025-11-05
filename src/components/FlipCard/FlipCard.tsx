@@ -10,15 +10,17 @@ interface FlipCardProps {
 export const FlipCard = ({ front, back }: FlipCardProps) => {
   const [flipped, setFlipped] = useState(false);
 
+  const handleClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.closest(".no-flip")) {
+      return;
+    }
+    setFlipped((f) => !f);
+  };
+
   return (
     <motion.div
-      onClick={() => setFlipped(!flipped)}
-      style={{
-        width: "100%",
-        height: "100%",
-        perspective: 1000,
-        cursor: "pointer",
-      }}
+      onClick={handleClick}
     >
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
@@ -40,6 +42,7 @@ export const FlipCard = ({ front, back }: FlipCardProps) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            pointerEvents: flipped ? "none" : "auto",
           }}
         >
           {front}
@@ -56,6 +59,7 @@ export const FlipCard = ({ front, back }: FlipCardProps) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            pointerEvents: flipped ? "auto" : "none",
           }}
         >
           {back}

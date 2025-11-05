@@ -1,7 +1,8 @@
 import { Anchor } from "@/components/Anchor/Anchor";
+import { FlipCard } from "@/components/FlipCard/FlipCard";
+import { ImageSlider } from "@/components/ImageSlider/ImageSlider";
 import { PaddedBox } from "@/components/PaddedBox/PaddedBox";
 import { ProjectTemplete } from "@/components/ProjectTemplete/ProjectTemplete";
-import { FlipCard } from "@/components/TiltCard/FlipCard";
 import { colors } from "@/utils/colors";
 import { Box, Grid, Text } from "@chakra-ui/react";
 
@@ -68,9 +69,12 @@ export const Project = () => {
             }
             back={
               <>
-                <div style={{backgroundColor: "#2C2C2E", color: "#FFFDEE"}}>
-                  <h1>Back</h1>
-                </div>
+                <ImageSlider images={[
+                  "/images/projects/hearo-main.png",
+                  "/images/projects/hearo-main.png",
+                  "/images/projects/hearo-main.png",
+                  "/images/projects/hearo-main.png",
+                ]} />
               </>
             }
           />
