@@ -1,69 +1,79 @@
 "use client";
 import { Anchor } from "@/components/Anchor/Anchor";
+import { Magnetic } from "@/components/Magnetic/Magnetic";
 import { PaddedBox } from "@/components/PaddedBox/PaddedBox";
-import { RoundBox } from "@/components/RoundBox/RoundBox";
 import { ScrollUpCard } from "@/components/ScrollUpCard/ScrollUpCard";
 import { colors } from "@/utils/colors";
-import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, VStack } from "@chakra-ui/react";
 import styled from "@emotion/styled";
+import { FaQuoteLeft } from "@react-icons/all-files/fa/FaQuoteLeft";
+import { FaQuoteRight } from "@react-icons/all-files/fa/FaQuoteRight";
 import { MdMoreHoriz } from "@react-icons/all-files/md/MdMoreHoriz";
 import Image from "next/image";
 
 const AboutTexts = () => {
   return (
-    <VStack align="flex-start" justify="flex-start" width="100%" gap="24px">
-      <Box flex="1">
-        <RoundBox color={colors.background.dark}>
-          <Text fontFamily="Aggravo" fontSize="20px" fontWeight="500">
-            사용자 경험을 완성
-          </Text>
-          <DescriptionText>
-            개발 결과를 시각적으로 확인하고 사용자 피드백을 바로 반영할 수
-            있다는 점에 매력을 느껴 프론트엔드 개발을 시작했습니다.
-          </DescriptionText>
-          <DescriptionText>
-            사용자와 가까운 곳에서 더 나은 경험을 만들어가고 싶습니다.
-          </DescriptionText>
-        </RoundBox>
+    <Box flex="1" position="relative">
+      <Magnetic strength={0.12}>
+        <Box
+          style={{
+            position: "absolute",
+            top: "6px",
+            left: "6px",
+            width: "100%",
+            height: "100%",
+            backgroundColor: colors.background.dark,
+            pointerEvents: "none",
+          }}
+        />
+      </Magnetic>
+      <Box
+        style={{
+          width: "100%",
+          height: "100%",
+          border: `3px solid ${colors.background.dark}`,
+          backgroundColor: colors.background.light,
+          padding: "32px",
+          position: "relative",
+          transition: "transform 0.2s ease",
+        }}
+      >
+        <DescriptionText>
+          <HStack align="flex-start" gap="8px">
+          <FaQuoteLeft />
+          <Highlight>
+            사용자 경험을 만드는
+            </Highlight>
+          <FaQuoteRight />
+          </HStack>
+          프론트엔드 개발자입니다.
+        </DescriptionText>
+        <Box height="16px" />
+        <DescriptionText style={{ fontSize: "20px", lineHeight: "1.6" }}>
+          새로운 기술과 문제에 호기심을 갖고
+          <br />
+          스스로 해결하며 성장합니다.
+          <br />
+          작은 부분이라도 더 나은 방법을 고민하며
+          <br />
+          완성도를 높이려 노력합니다.
+        </DescriptionText>
       </Box>
-      <Box flex="1">
-        <RoundBox color={colors.background.dark}>
-          <Text fontFamily="Aggravo" fontSize="20px" fontWeight="500">
-            도전 정신과 실행력
-          </Text>
-          <DescriptionText>
-            새로운 기술이나 문제 상황과 마주했을 때 호기심이 앞섭니다.{" "}
-          </DescriptionText>
-          <DescriptionText>
-            스스로 부딪히고 해결하는 과정에서 쌓인 경험이 저를 한 단계
-            성장시키는 원동력이 됩니다.
-          </DescriptionText>
-        </RoundBox>
-      </Box>
-      <Box flex="1">
-        <RoundBox color={colors.background.dark}>
-          <Text fontFamily="Aggravo" fontSize="20px" fontWeight="500">
-            후회 없는 개발
-          </Text>
-          <DescriptionText>
-            “이 정도면 됐다”는 생각보다는, “더 나은 방법은 없을까?”를 먼저
-            떠올립니다.{" "}
-          </DescriptionText>
-          <DescriptionText>
-            작은 부분이라도 개선할 수 있다면 끝까지 고민하며 완성도를 높이려
-            노력합니다.
-          </DescriptionText>
-        </RoundBox>
-      </Box>
-    </VStack>
+    </Box>
   );
 };
 
-const DescriptionText = styled.p`
-  font-size: 18px;
+const Highlight = styled.span`
   font-weight: 700;
+  padding-bottom: 2px;
+`;
+
+const DescriptionText = styled.p`
+  font-size: 24px;
+  font-weight: 400;
   color: ${colors.text.black};
-  line-height: 1.2;
+  line-height: 1.5;
+  margin: 0;
 `;
 
 export const ProfileContent = () => {
@@ -71,45 +81,61 @@ export const ProfileContent = () => {
     <ScrollUpCard>
       <PaddedBox>
         <Anchor text="ABOUT" href="#about" />
-        <HStack align="flex-end" justify="center" gap="24px" width="100%">
-          <Box flex="1">
-            <Box height="36px" />
-            <AboutText>
-              <p>안녕하세요</p>
-              <HStack>
-                <p>프론트엔드 개발자 이민경입니다.</p>
-                <MdMoreHoriz style={{fontSize: "60px", cursor: "pointer"}} />
+        <Box height="48px" />
+        <HStack align="center" gap="16px">
+          <AboutText>
+            <VStack align="flex-start" gap="8px">
+              <p style={{ margin: 0 }}>안녕하세요.</p>
+              <HStack gap="12px">
+                <p style={{ margin: 0 }}>개발자 이민경입니다</p>
+                <Magnetic strength={0.5}>
+                  <MdMoreHoriz 
+                    style={{
+                      fontSize: "48px", 
+                      cursor: "pointer",
+                      transition: "transform 0.2s ease"
+                    }} 
+                  />
+                </Magnetic>
               </HStack>
-            </AboutText>
-            <Box height="24px" />
-            <Box
-              height="4px"
-              width="100%"
-              backgroundColor={colors.background.dark}
-            />
-            <Box height="36px" />
-            <Box
-              borderRadius="30px"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              style={{boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)"}}
-            >
+            </VStack>
+          </AboutText>
+        </HStack>
+
+        <Box height="32px" />
+        <Divider />
+        <Box height="48px" />
+
+        <HStack align="stretch" gap="32px" width="100%">
+          <Box position="relative" flexShrink={0}>
+            <Magnetic strength={0.15}>
+              <Box
+                style={{
+                  position: "absolute",
+                  top: "6px",
+                  left: "6px",
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: colors.background.dark,
+                  pointerEvents: "none",
+                }}
+              />
+            </Magnetic>
+            <Box position="relative">
               <Image
                 src="/images/github-profile.jpeg"
                 alt="profile"
-                width={400}
-                height={400}
+                width={360}
+                height={360}
                 style={{
-                  borderRadius: "30px",
-                  boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  border: `3px solid ${colors.background.dark}`,
+                  position: "relative",
                 }}
               />
             </Box>
           </Box>
-          <Box flex="1">
-            <AboutTexts />
-          </Box>
+          <AboutTexts />
         </HStack>
       </PaddedBox>
     </ScrollUpCard>
@@ -125,15 +151,27 @@ export const Profile = () => {
 };
 
 const Container = styled.div`
-  height: 100vh;
-  position: relative;
+  min-height: 100vh;
   width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
 `;
 
 const AboutText = styled.div`
-  font-size: 24px;
+  font-size: 32px;
   font-family: 'Aggravo';
   font-weight: 300;
   color: ${colors.text.black};
-  line-height: 1.2;
+  line-height: 1.3;
+  
+  p {
+    margin: 0;
+  }
+`;
+
+const Divider = styled.div`
+  width: 100%;
+  height: 3px;
+  background-color: ${colors.background.dark};
 `;

@@ -10,7 +10,7 @@ export const colors = {
   },
   background: {
     dark: '#2C2C2E',
-    light: '#FFFFFF',
+    light: '#FFFFFD',
     yellow: '#FFCC00',
   },
   kind: {
