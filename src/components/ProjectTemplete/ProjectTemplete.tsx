@@ -16,7 +16,6 @@ interface ProjectFrontCardProps {
 export const ProjectFrontCard = ({
   project,
 }: ProjectFrontCardProps) => {
-  console.log(project);
   const { imageSrc, title, period, introduction, people, role, techStack, projectType, projectLinkBadges } = project;
   return (
     <Box

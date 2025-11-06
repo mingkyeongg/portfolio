@@ -8,7 +8,6 @@ import { colors } from "@/utils/colors";
 import { Box, Grid } from "@chakra-ui/react";
 
 export const Project = () => {
-  console.log(projectData);
   return (
     <Box
       backgroundColor={colors.background.light}

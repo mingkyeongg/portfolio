@@ -39,7 +39,7 @@ const AboutTexts = () => {
         }}
       >
         <DescriptionText>
-          <HStack align="flex-start" gap="8px">
+          <HStack align="flex-start" gap="8px" width="fit-content" data-cursor-target="highlight">
           <FaQuoteLeft />
           <Highlight>
             사용자 경험을 만드는
@@ -68,7 +68,7 @@ const Highlight = styled.span`
   padding-bottom: 2px;
 `;
 
-const DescriptionText = styled.p`
+const DescriptionText = styled.div`
   font-size: 24px;
   font-weight: 400;
   color: ${colors.text.black};

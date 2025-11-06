@@ -1,7 +1,7 @@
 "use client";
 import { colors } from "@/utils/colors";
 import styled from "@emotion/styled";
-import { motion, MotionValue, useMotionValueEvent, useScroll } from "framer-motion";
+import { motion, MotionValue, useScroll } from "framer-motion";
 import { useRef } from "react";
 import { Header } from "./Header";
 
@@ -79,11 +79,6 @@ export const Landing = () => {
     target: sectionRef,
     offset: ['start end', 'end start'],
   });
-
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    console.log(latest * 100);
-  });
-
   return (
     <LandingContainer ref={sectionRef}>
       <Header />
