@@ -1,3 +1,4 @@
+import { AboutMe } from "@/features/AboutMe";
 import { Landing } from "@/features/Landing";
 import { Profile } from "@/features/Profile";
 import { Project } from "@/features/Project";
@@ -11,6 +12,7 @@ export default function Home() {
       </section>
       <section id="about">
       <Profile />
+      <AboutMe />
       </section>
       <section id="skills">
       <Skills />

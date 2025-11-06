@@ -10,7 +10,6 @@ import { FaQuoteLeft } from "@react-icons/all-files/fa/FaQuoteLeft";
 import { FaQuoteRight } from "@react-icons/all-files/fa/FaQuoteRight";
 import { MdMoreHoriz } from "@react-icons/all-files/md/MdMoreHoriz";
 import Image from "next/image";
-import { AboutMe } from "./AboutMe";
 
 const AboutTexts = () => {
   return (
@@ -147,7 +146,6 @@ export const Profile = () => {
   return (
     <Container>
       <ProfileContent />
-      <AboutMe />
     </Container>
   );
 };
