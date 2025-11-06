@@ -6,13 +6,13 @@ export const Header = () => {
   return (
     <HeaderContainer>
         <HeaderTitle>
-          <span>LEE MINKYEONG</span>
+          <Link href="#landing">LEE MINKYEONG</Link>
         </HeaderTitle>
         <HeaderMenu>
-          <HeaderMenuItem as={Link} href="#about">ABOUT</HeaderMenuItem>
-          <HeaderMenuItem as={Link} href="#skills">SKILLS</HeaderMenuItem>
-          <HeaderMenuItem as={Link} href="#projects">PROJECTS</HeaderMenuItem>
-          <HeaderMenuItem as={Link} href="#contact">CONTACT</HeaderMenuItem>
+          <HeaderMenuItem href="#about">ABOUT</HeaderMenuItem>
+          <HeaderMenuItem href="#skills">SKILLS</HeaderMenuItem>
+          <HeaderMenuItem href="#projects">PROJECTS</HeaderMenuItem>
+          <HeaderMenuItem href="#contact">CONTACT</HeaderMenuItem>
         </HeaderMenu>
     </HeaderContainer>
   );
@@ -36,15 +36,16 @@ const HeaderTitle = styled.h1`
   font-weight: medium;
 `;
 
-const HeaderMenu = styled.div`
+const HeaderMenu = styled.nav`
   display: flex;
   gap: 20px;
   font-size: 24px;
 `;
 
-const HeaderMenuItem = styled.span`
+const HeaderMenuItem = styled.a`
   cursor: pointer;
-
+  text-decoration: none;
+  color: ${colors.text.cream};
   &:hover {
     color: ${colors.text.gray};
   }

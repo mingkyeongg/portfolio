@@ -1,3 +1,4 @@
+import { CustomCursor } from "@/components/CustomCursor/CustomCursor";
 import { Providers } from "@/components/ui/Provider";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -14,9 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >
+      <body>
         <Providers>
           {children}
+          <CustomCursor />
         </Providers>
       </body>
     </html>

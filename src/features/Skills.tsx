@@ -19,7 +19,7 @@ const skills = [
   {
     title: "HTML / CSS",
     description: [
-      "웹 표준과 접근성을 준수하며, 반응형·크로스브라우저 환경을 고려해 코드를 작성합니다.",
+      "웹 표준과 접근성을 준수하며 반응형·크로스브라우저 환경을 고려해 코드를 작성합니다.",
       "Emotion, Chakra UI를 활용해 일관된 디자인 시스템을 구축했습니다.",
       "Storybook을 통해 UI 컴포넌트를 문서화 한 경험이 있습니다.",
       "CSS keyframe 및 Framer Motion을 활용한 애니메이션 구현이 가능합니다.",

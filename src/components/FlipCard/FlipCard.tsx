@@ -20,6 +20,7 @@ export const FlipCard = ({ front, back }: FlipCardProps) => {
 
   return (
     <motion.div
+      data-cursor-target="flip"
       onClick={handleClick}
       animate={{ rotateY: flipped ? 180 : 0 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
