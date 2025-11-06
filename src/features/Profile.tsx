@@ -87,7 +87,7 @@ export const ProfileContent = () => {
             <VStack align="flex-start" gap="8px">
               <p style={{ margin: 0 }}>안녕하세요.</p>
               <HStack gap="12px">
-                <p style={{ margin: 0 }}>개발자 이민경입니다</p>
+                <p style={{ margin: 0 }}><span data-cursor-target="highlight">개발자 이민경</span>입니다</p>
                 <Magnetic strength={0.5}>
                   <MdMoreHoriz 
                     style={{

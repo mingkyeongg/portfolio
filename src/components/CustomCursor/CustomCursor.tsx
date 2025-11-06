@@ -73,7 +73,7 @@ export const CustomCursor = () => {
       width: targetBounds?.width ?? 64,
       backgroundImage: "linear-gradient(135deg, rgba(180, 200, 255, 0.15), rgba(200, 180, 255, 0.15))",
       mixBlendMode: "normal",
-      border: `1px solid ${colors.text.gray}`,
+      border: `2px solid ${colors.text.gray}`,
       borderRadius: "6px",
       opacity: 1,
       transition: {
