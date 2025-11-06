@@ -65,7 +65,7 @@ export const AboutMe = () => {
                 <TimelineRow key={experience.title} isLeft={isLeft}>
                   {isLeft ? (
                     <>
-                      <CardWrapper>
+                      <CardWrapper isLeft={true}>
                         <AnimatedBox index={index} isLeft={true}>
                           <ExperienceItem experience={experience} />
                         </AnimatedBox>
@@ -74,16 +74,16 @@ export const AboutMe = () => {
                         <Dot />
                         <HorizontalLine />
                       </DotWrapper>
-                      <CardWrapper />
+                      <CardWrapper isLeft={true} />
                     </>
                   ) : (
                     <>
-                      <CardWrapper />
+                      <CardWrapper isLeft={false}   />
                       <DotWrapper>
                         <HorizontalLine />
                         <Dot />
                       </DotWrapper>
-                      <CardWrapper>
+                      <CardWrapper isLeft={false}>
                         <AnimatedBox index={index} isLeft={false}>
                           <ExperienceItem experience={experience} />
                         </AnimatedBox>
@@ -130,11 +130,11 @@ const TimelineRow = styled(HStack)<{ isLeft: boolean }>`
   position: relative;
 `;
 
-const CardWrapper = styled.div`
+const CardWrapper = styled.div<{ isLeft: boolean }>`
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: 0 24px;
+  padding: ${({ isLeft }) => isLeft ? "0 24px 0 0" : "0 0 0 24px"};
   margin-top: -84px;
 `;
 

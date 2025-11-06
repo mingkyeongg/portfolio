@@ -10,11 +10,11 @@ interface ExperienceItemProps {
 
 export const ExperienceItem = ({ experience }: ExperienceItemProps) => {
   return (
-    <WrapperBox>
+    <WrapperBox titleColor={experience.titleColor} >
+      
       <Magnetic strength={0.08}>
         <Shadow className="shadow" />
       </Magnetic>
-      
       <Container>
         <HStack justify="space-between" align="flex-start" marginBottom="16px">
           <VStack align="flex-start" gap="8px">
@@ -54,6 +54,14 @@ const Shadow = styled.div`
   transition: all 0.3s ease;
 `;
 
+const Title = styled(Text)`
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Aggravo';
+  color: ${colors.text.black};
+  line-height: 1.2;
+`;
+
 const Container = styled(Box)`
   width: 100%;
   border: 3px solid ${colors.background.dark};
@@ -66,24 +74,25 @@ const Container = styled(Box)`
   &:hover {
     transform: translate(-2px, -2px);
   }
-`;
 
-const WrapperBox = styled(Box)`
+  `;
+  
+  const WrapperBox = styled(Box)<{ titleColor: string }>`
   position: relative;
   width: 100%;
   
   &:hover .shadow {
     transform: translate(4px, 4px);
+    }
+    
+    &:hover ${Title} {
+      color: ${({ titleColor }) => titleColor};
+    }
+  &:hover ${Shadow} {
+    background-color: ${({ titleColor }) => titleColor};
   }
 `;
 
-const Title = styled(Text)`
-  font-size: 24px;
-  font-weight: 700;
-  font-family: 'Aggravo';
-  color: ${colors.text.black};
-  line-height: 1.2;
-`;
 
 const Role = styled(Text)`
   font-size: 16px;
