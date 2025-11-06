@@ -10,6 +10,7 @@ import { FaQuoteLeft } from "@react-icons/all-files/fa/FaQuoteLeft";
 import { FaQuoteRight } from "@react-icons/all-files/fa/FaQuoteRight";
 import { MdMoreHoriz } from "@react-icons/all-files/md/MdMoreHoriz";
 import Image from "next/image";
+import { AboutMe } from "./AboutMe";
 
 const AboutTexts = () => {
   return (
@@ -146,14 +147,16 @@ export const Profile = () => {
   return (
     <Container>
       <ProfileContent />
+      <AboutMe />
     </Container>
   );
 };
 
 const Container = styled.div`
-  min-height: 100vh;
+  height: auto;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   padding: 80px 0;
 `;

@@ -23,7 +23,6 @@ export const projectData: ProjectType[] = [
           href: "https://github.com/orgs/Project-Hearo/repositories",
         },
         {text: "Website", href: "https://www.website.com"},
-        {text: "More", href: "https://www.more.com"},
       ],
     },
     back: {
