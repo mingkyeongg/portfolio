@@ -1,7 +1,12 @@
+import { ExperienceItem } from "@/components/ExperienceItem/ExperienceItem";
+import { experienceData } from "@/utils/ExprienceData";
+
 export const AboutMe = () => {
   return (
     <div>
-      <h1>About Me</h1>
+      {experienceData.map((experience) => (
+        <ExperienceItem key={experience.title} experience={experience} />
+      ))}
     </div>
   );
 };
