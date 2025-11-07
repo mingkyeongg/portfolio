@@ -1,5 +1,6 @@
 "use client";
 import { AboutMe } from "@/features/AboutMe";
+import { Footer } from "@/features/Footer";
 import { Landing } from "@/features/Landing";
 import { Profile } from "@/features/Profile";
 import { Project } from "@/features/Project";
@@ -61,6 +62,8 @@ export default function Home() {
       >
         <Project />
       </section>  
+
+      <Footer />
     </>
   );
 }
