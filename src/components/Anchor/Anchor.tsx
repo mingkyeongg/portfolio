@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { colors } from "@/utils/colors";
 import { LinkIcon } from "@chakra-ui/icons";
 import { HStack, Icon, Text } from "@chakra-ui/react";
@@ -12,6 +13,7 @@ interface AnchorProps {
 }
 
 export const Anchor = ({ text, href, color = colors.background.dark }: AnchorProps) => {
+  const isMobile = useIsMobile();
   return (
     <Link href={href}>
       <HStack
@@ -23,8 +25,8 @@ export const Anchor = ({ text, href, color = colors.background.dark }: AnchorPro
         padding="10px 20px"
         width="fit-content"
         >
-        <Icon as={LinkIcon} width="24px" height="24px" fontWeight="bold" color={color} />
-        <Text style={{ fontSize: "18px", marginTop: "4px", color: color }}>{text}</Text>
+        <Icon as={LinkIcon} width={isMobile ? "20px" : "24px"} height={isMobile ? "20px" : "24px"} fontWeight="bold" color={color} />
+        <Text style={{ fontSize: isMobile ? "14px" : "18px", marginTop: "4px", color: color }}>{text}</Text>
       </HStack>
     </Link>
   )

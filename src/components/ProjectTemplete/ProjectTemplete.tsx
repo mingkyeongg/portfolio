@@ -1,4 +1,5 @@
 "use client";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { ProjectBackType, ProjectFrontType } from "@/types/projects";
 import { colors } from "@/utils/colors";
 import { Box, HStack, Icon, List, Text } from "@chakra-ui/react";
@@ -14,6 +15,7 @@ interface ProjectFrontCardProps {
 }
 
 export const ProjectFrontCard = ({project}: ProjectFrontCardProps) => {
+  const isMobile = useIsMobile();
   const {
     imageSrc,
     title,
@@ -39,7 +41,7 @@ export const ProjectFrontCard = ({project}: ProjectFrontCardProps) => {
         boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)",
       }}
     >
-      <Box position="relative" width="100%" height="250px">
+      <Box position="relative" width="100%" height={isMobile ? "150px" : "250px"}>
         <Image
           src={imageSrc}
           alt={title}
@@ -74,12 +76,12 @@ export const ProjectFrontCard = ({project}: ProjectFrontCardProps) => {
           )}
         </HStack>
         <HStack align="center" justify="flex-start" gap="12px">
-          <Text fontFamily="Aggravo" fontSize="24px" fontWeight="600">
+          <Text fontFamily="Aggravo" fontSize={isMobile ? "20px" : "24px"} fontWeight="600">
             {title}
           </Text>
           <Text
             fontFamily="Pretendard"
-            fontSize="16px"
+            fontSize={isMobile ? "14px" : "16px"}
             fontWeight="400"
             style={{color: colors.text.gray}}
           >
@@ -92,7 +94,7 @@ export const ProjectFrontCard = ({project}: ProjectFrontCardProps) => {
             height="24px"
             backgroundColor={colors.background.dark}
           />
-          <Text fontFamily="Pretendard" fontSize="16px" fontWeight="400">
+          <Text fontFamily="Pretendard" fontSize={isMobile ? "14px" : "16px"} fontWeight="400">
             {introduction}
           </Text>
         </HStack>
@@ -103,7 +105,7 @@ export const ProjectFrontCard = ({project}: ProjectFrontCardProps) => {
             height="20px"
             color={colors.text.gray}
           />
-          <Text fontFamily="Pretendard" fontSize="16px" fontWeight="400">
+          <Text fontFamily="Pretendard" fontSize={isMobile ? "14px" : "16px"} fontWeight="400">
             {people}
           </Text>
         </HStack>
@@ -114,7 +116,7 @@ export const ProjectFrontCard = ({project}: ProjectFrontCardProps) => {
             height="20px"
             color={colors.text.gray}
           />
-          <Text fontFamily="Pretendard" fontSize="16px" fontWeight="400">
+          <Text fontFamily="Pretendard" fontSize={isMobile ? "14px" : "16px"} fontWeight="400">
             {role}
           </Text>
         </HStack>
@@ -127,7 +129,7 @@ export const ProjectFrontCard = ({project}: ProjectFrontCardProps) => {
         >
           <Text
             fontFamily="Pretendard"
-            fontSize="16px"
+            fontSize={isMobile ? "14px" : "16px"}
             fontWeight="400"
             style={{
               display: "-webkit-box",
@@ -175,6 +177,7 @@ interface ProjectBackCardProps {
 }
 
 export const ProjectBackCard = ({project}: ProjectBackCardProps) => {
+  const isMobile = useIsMobile();
   const {images, content, implementation} = project;
   return (
     <Box
@@ -199,21 +202,21 @@ export const ProjectBackCard = ({project}: ProjectBackCardProps) => {
       </Box>
 
       <Box width="100%" px="24px" py="16px">
-        <Text fontFamily="Aggravo" fontSize="18px" fontWeight="600" mb="8px">
+        <Text fontFamily="Aggravo" fontSize={isMobile ? "16px" : "18px"} fontWeight="600" mb="8px">
           프로젝트 개요
         </Text>
-        <Box fontFamily="Pretendard" fontSize="15px" fontWeight="400">
+        <Box fontFamily="Pretendard" fontSize={isMobile ? "12px" : "15px"} fontWeight="400">
           {content.map((item) => (
             <Text key={item}>{item}</Text>
           ))}
         </Box>
       </Box>
       <Box width="100%" px="24px" py="16px" bg="white">
-        <Text fontFamily="Aggravo" fontSize="18px" fontWeight="600" mb="8px">
+        <Text fontFamily="Aggravo" fontSize={isMobile ? "16px" : "18px"} fontWeight="600" mb="8px">
           구현 내용
         </Text>
         <Box padding="0 12px">
-          <List.Root>
+          <List.Root fontSize={isMobile ? "12px" : "15px"} fontWeight="400">
             {implementation.map((item) => (
               <List.Item key={item}>{item}</List.Item>
             ))}

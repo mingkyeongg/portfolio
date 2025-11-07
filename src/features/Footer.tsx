@@ -1,3 +1,4 @@
+import { breakpoints } from "@/utils/breakpoints";
 import { colors } from "@/utils/colors";
 import styled from "@emotion/styled";
 
@@ -14,4 +15,10 @@ const FooterContainer = styled.footer`
   color: ${colors.text.cream};
   padding: 48px;
   text-align: center;
+  font-size: 14px;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    padding: 24px;
+    font-size: 12px;
+  }
 `;

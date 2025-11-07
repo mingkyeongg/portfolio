@@ -3,6 +3,7 @@ import { Anchor } from "@/components/Anchor/Anchor";
 import { PaddedBox } from "@/components/PaddedBox/PaddedBox";
 import { ScrollUpCard } from "@/components/ScrollUpCard/ScrollUpCard";
 import { SkillBox } from "@/components/SkillBox/SkillBox";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { colors } from "@/utils/colors";
 import { Box, Grid, HStack } from "@chakra-ui/react";
 import styled from "@emotion/styled";
@@ -73,11 +74,12 @@ export const AnimatedGrid = ({children}: {children: React.ReactNode[]}) => {
   const ref = useRef<HTMLDivElement>(null);
   const MotionGrid = motion(Grid);
   const isInView = useInView(ref, {once: true, amount: 0.2});
+  const isMobile = useIsMobile();
 
   return (
     <MotionGrid
       ref={ref}
-      templateColumns="repeat(2, 1fr)"
+      templateColumns={isMobile ? "repeat(1, 1fr)" : "repeat(2, 1fr)"}
       gap="32px"
       width="100%"
       height="100%"

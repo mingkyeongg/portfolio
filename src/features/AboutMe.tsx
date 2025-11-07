@@ -2,6 +2,7 @@
 
 import { ExperienceItem } from "@/components/ExperienceItem/ExperienceItem";
 import { PaddedBox } from "@/components/PaddedBox/PaddedBox";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { experienceData } from "@/utils/ExprienceData";
 import { HStack, VStack } from "@chakra-ui/react";
 import styled from "@emotion/styled";
@@ -51,6 +52,30 @@ const AnimatedBox = ({
 };
 
 export const AboutMe = () => {
+  const isMobile = useIsMobile();
+
+  const MobileLayout = () => {
+    return (
+      <VStack width="100%" gap="40px" position="relative">
+        {experienceData.map((experience, index) => {
+          return (
+            <ExperienceItem key={experience.title} experience={experience} />
+          );
+        })}
+      </VStack>
+    );
+  };
+
+  if (isMobile) {
+    return (
+      <Container>
+        <PaddedBox>
+          <MobileLayout />
+        </PaddedBox>
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <PaddedBox>

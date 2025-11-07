@@ -1,12 +1,15 @@
+import { useIsMobile } from "@/hooks/useIsMobile";
+import { breakpoints } from "@/utils/breakpoints";
 import { colors } from "@/utils/colors";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
 export const Header = () => {
+  const isMobile = useIsMobile();
   return (
     <HeaderContainer>
         <HeaderTitle>
-          <Link href="#landing">LEE MINKYEONG</Link>
+          <Link href="#landing">{isMobile ? "이민경" : "LEE MINKYEONG"}</Link>
         </HeaderTitle>
         <HeaderMenu>
           <HeaderMenuItem href="#about">ABOUT</HeaderMenuItem>
@@ -33,12 +36,21 @@ const HeaderContainer = styled.header`
 const HeaderTitle = styled.h1`
   font-size: 36px;
   font-weight: medium;
+  
+  @media (max-width: ${breakpoints.mobile}px) {
+    font-size: 16px;
+  }
 `;
 
 const HeaderMenu = styled.nav`
   display: flex;
   gap: 20px;
   font-size: 24px;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    font-size: 16px;
+    gap: 10px;
+  }
 `;
 
 const HeaderMenuItem = styled.a`

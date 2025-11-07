@@ -1,4 +1,5 @@
 "use client";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { colors } from "@/utils/colors";
 import { Box, Text } from "@chakra-ui/react";
 import { FaAppStore } from "@react-icons/all-files/fa/FaAppStore";
@@ -30,6 +31,7 @@ const iconMap = {
 };
 
 export const ProjectLinkBadge = ({text, href}: ProjectLinkBadgeProps) => {
+  const isMobile = useIsMobile();
   return (
     <Link href={href} target="_blank">
       <Box
@@ -45,7 +47,7 @@ export const ProjectLinkBadge = ({text, href}: ProjectLinkBadgeProps) => {
         borderRadius="100px"
       >
         {iconMap[text]}
-        <Text fontFamily="Pretendard" fontSize="16px" fontWeight="600">
+        <Text fontFamily="Pretendard" fontSize={isMobile ? "14px" : "16px"} fontWeight="600">
           {textMap[text]}
         </Text>
       </Box>

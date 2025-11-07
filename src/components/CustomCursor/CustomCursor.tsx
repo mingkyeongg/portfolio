@@ -1,4 +1,5 @@
 "use client";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { colors } from "@/utils/colors";
 import { motion, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -15,8 +16,10 @@ export const CustomCursor = () => {
   const [cursorText, setCursorText] = useState("");
   const [cursorVariant, setCursorVariant] = useState<"default" | "hover" | "click" | "highlight" | "text">("default");
 
-  // 타겟 요소 정보 저장
   const [targetBounds, setTargetBounds] = useState<TargetBounds | null>(null);
+  const isMobile = useIsMobile();
+
+
 
   const variants: Variants = {
     default: {
@@ -156,6 +159,8 @@ export const CustomCursor = () => {
       }
     };
 
+    
+
     const handleMouseOut = (e: MouseEvent) => {
       const target = e.target;
       const relatedTarget = e.relatedTarget;
@@ -193,6 +198,8 @@ export const CustomCursor = () => {
       document.removeEventListener("mouseout", handleMouseOut);
     };
   }, []);
+
+  if (isMobile) return null;
 
   return (
     <motion.div

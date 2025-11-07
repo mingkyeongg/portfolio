@@ -114,6 +114,7 @@ const LandingContent = styled.div`
   height: 100vh;
   width: 100%;
   gap: 10vh;
+  overflow: hidden;
 `; 
 
 const LandingContentText = styled.span`

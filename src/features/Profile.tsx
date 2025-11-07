@@ -3,6 +3,8 @@ import { Anchor } from "@/components/Anchor/Anchor";
 import { Magnetic } from "@/components/Magnetic/Magnetic";
 import { PaddedBox } from "@/components/PaddedBox/PaddedBox";
 import { ScrollUpCard } from "@/components/ScrollUpCard/ScrollUpCard";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import { breakpoints } from "@/utils/breakpoints";
 import { colors } from "@/utils/colors";
 import { Box, HStack, VStack } from "@chakra-ui/react";
 import styled from "@emotion/styled";
@@ -31,6 +33,7 @@ const ContactButton = ({ url, name }: { url: string, name: string }) => {
 };
 
 const AboutTexts = () => {
+  const isMobile = useIsMobile();
   return (
     <Box flex="1" position="relative">
       <Magnetic strength={0.12}>
@@ -68,7 +71,7 @@ const AboutTexts = () => {
           프론트엔드 개발자입니다.
         </DescriptionText>
         <Box height="16px" />
-        <DescriptionText style={{ fontSize: "20px", lineHeight: "1.6" }}>
+        <DescriptionText style={{ fontSize: isMobile ? "16px" : "20px", lineHeight: "1.6" }}>
           새로운 기술과 문제에 호기심을 갖고
           <br />
           스스로 해결하며 성장합니다.
@@ -78,7 +81,7 @@ const AboutTexts = () => {
           완성도를 높이려 노력합니다.
         </DescriptionText>
         <Box height="48px" />
-        <HStack align="center" gap="36px" justify="flex-end">
+        <HStack align="center" gap="36px" justify={isMobile ? "center" : "flex-end"}>
           <ContactButton url="https://minkylee.tistory.com/" name="tistory" />
           <ContactButton url="https://github.com/mingkyeongg" name="github" />
           <ContactButton url="mailto:ming0820@naver.com" name="mail" />
@@ -99,9 +102,14 @@ const DescriptionText = styled.div`
   color: ${colors.text.black};
   line-height: 1.5;
   margin: 0;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    font-size: 16px;
+  }
 `;
 
 export const ProfileContent = () => {
+  const isMobile = useIsMobile();
   return (
     <ScrollUpCard>
       <PaddedBox>
@@ -131,6 +139,7 @@ export const ProfileContent = () => {
         <Divider />
         <Box height="48px" />
 
+        {!isMobile && (
         <HStack align="stretch" gap="32px" width="100%">
           <Box position="relative" flexShrink={0}>
             <Magnetic strength={0.15}>
@@ -162,6 +171,18 @@ export const ProfileContent = () => {
           </Box>
           <AboutTexts />
         </HStack>
+        )}
+        {isMobile && (
+          <VStack>
+            <Image
+              src="/images/github-profile.jpeg"
+              alt="profile"
+              width={360}
+              height={360}
+            />
+            <AboutTexts />
+          </VStack>
+        )}
       </PaddedBox>
     </ScrollUpCard>
   );
@@ -182,6 +203,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 80px 0;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    padding: 40px 0;
+  }
 `;
 
 const AboutText = styled.div`

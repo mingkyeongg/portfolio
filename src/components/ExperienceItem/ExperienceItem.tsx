@@ -1,5 +1,6 @@
 import { Magnetic } from "@/components/Magnetic/Magnetic";
 import { Experience } from "@/types/experience";
+import { breakpoints } from "@/utils/breakpoints";
 import { colors } from "@/utils/colors";
 import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 import styled from "@emotion/styled";
@@ -59,6 +60,10 @@ const Title = styled(Text)`
   font-family: 'Aggravo';
   color: ${colors.text.black};
   line-height: 1.2;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    font-size: 20px;
+  }
 `;
 
 const Container = styled(Box)`
@@ -100,6 +105,10 @@ const Role = styled(Text)`
   background-color: ${colors.background.dark};
   color: ${colors.text.cream};
   display: inline-block;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    font-size: 14px;
+  }
 `;
 
 const Period = styled(Text)`
@@ -140,4 +149,8 @@ const DescriptionText = styled(Text)`
   color: ${colors.text.black};
   line-height: 1.6;
   flex: 1;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    font-size: 14px;
+  }
 `;
