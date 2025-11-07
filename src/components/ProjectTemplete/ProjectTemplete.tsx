@@ -61,16 +61,18 @@ export const ProjectFrontCard = ({project}: ProjectFrontCardProps) => {
         backgroundColor={colors.background.light}
         gap="8px"
       >
-        {Array.isArray(projectType) ? (
-          projectType.map((type) => (
-            <ProjectTypeBadge
-              key={type}
-              text={type as "Web" | "Mobile" | "etc"}
-            />
-          ))
-        ) : (
-          <ProjectTypeBadge text={projectType as "Web" | "Mobile" | "etc"} />
-        )}
+        <HStack align="center" justify="flex-start" gap="4px">
+          {Array.isArray(projectType) ? (
+            projectType.map((type) => (
+              <ProjectTypeBadge
+                key={type}
+                text={type as "Web" | "Mobile" | "etc"}
+              />
+            ))
+          ) : (
+            <ProjectTypeBadge text={projectType as "Web" | "Mobile" | "etc"} />
+          )}
+        </HStack>
         <HStack align="center" justify="flex-start" gap="12px">
           <Text fontFamily="Aggravo" fontSize="24px" fontWeight="600">
             {title}

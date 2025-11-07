@@ -31,7 +31,7 @@ const iconMap = {
 
 export const ProjectLinkBadge = ({text, href}: ProjectLinkBadgeProps) => {
   return (
-    <Link href={href}>
+    <Link href={href} target="_blank">
       <Box
         width="fit-content"
         height="fit-content"
