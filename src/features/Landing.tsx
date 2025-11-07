@@ -102,6 +102,7 @@ const LandingContainer = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  overflow: hidden;
 `;
 
 
