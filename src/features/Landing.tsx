@@ -1,19 +1,21 @@
 "use client";
 import { colors } from "@/utils/colors";
 import styled from "@emotion/styled";
-import { motion, MotionValue, useScroll } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Header } from "./Header";
 
 const UpText = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
   const text = 'PORTFOLIO';
+
+  const x = useTransform(scrollYProgress, [0.5, 1], [0, 1000]);
   const letter = {
     hidden: { y: 40, opacity: 0 },
     visible: { y: 0, opacity: 1 },
   };
   return (
     <motion.div
-    initial={{ opacity: 0, y: 100 }}
+    initial={{ opacity: 0, x: 0,y: 100 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
     style={{
@@ -21,8 +23,8 @@ const UpText = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) =
       fontWeight: 'medium',
       fontFamily: 'Aggravo',
       color: colors.text.cream,
+      x: x,
       opacity: scrollYProgress.get(),
-      translateY: scrollYProgress.get(),
     }}
     >
       {text.split('').map((char, index) => (
