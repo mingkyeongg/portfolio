@@ -58,7 +58,6 @@ const SkillIcons = [
   "/icons/skills/C.svg",
   "/icons/skills/CPP.svg",
   "/icons/skills/Git.svg",
-  "/icons/skills/GitHub-Light.svg",
   "/icons/skills/AWS-Light.svg",
 ];
 
