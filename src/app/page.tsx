@@ -60,7 +60,7 @@ export default function Home() {
         ref={(el) => void (sectionsRef.current.projects = el)}
       >
         <Project />
-      </section>
+      </section>  
     </>
   );
 }

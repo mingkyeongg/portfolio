@@ -10,6 +10,25 @@ import { FaQuoteLeft } from "@react-icons/all-files/fa/FaQuoteLeft";
 import { FaQuoteRight } from "@react-icons/all-files/fa/FaQuoteRight";
 import { MdMoreHoriz } from "@react-icons/all-files/md/MdMoreHoriz";
 import Image from "next/image";
+import Link from "next/link";
+
+
+const nameToIcon: Record<string, string> = {
+  github: "/icons/github.svg",
+  tistory: "/icons/tistory.svg",
+  mail: "/icons/mail.svg",
+};
+
+
+const ContactButton = ({ url, name }: { url: string, name: string }) => {
+  return (
+    <HStack align="center" gap="16px">
+      <Link href={url} target="_blank">
+        <Image src={nameToIcon[name]} alt={name} width={36} height={36} />
+      </Link>
+    </HStack>
+  );
+};
 
 const AboutTexts = () => {
   return (
@@ -58,6 +77,12 @@ const AboutTexts = () => {
           <br />
           완성도를 높이려 노력합니다.
         </DescriptionText>
+        <Box height="48px" />
+        <HStack align="center" gap="36px" justify="flex-end">
+          <ContactButton url="https://minkylee.tistory.com/" name="tistory" />
+          <ContactButton url="https://github.com/mingkyeongg" name="github" />
+          <ContactButton url="mailto:ming0820@naver.com" name="mail" />
+      </HStack>
       </Box>
     </Box>
   );

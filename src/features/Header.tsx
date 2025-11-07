@@ -12,7 +12,6 @@ export const Header = () => {
           <HeaderMenuItem href="#about">ABOUT</HeaderMenuItem>
           <HeaderMenuItem href="#skills">SKILLS</HeaderMenuItem>
           <HeaderMenuItem href="#projects">PROJECTS</HeaderMenuItem>
-          <HeaderMenuItem href="#contact">CONTACT</HeaderMenuItem>
         </HeaderMenu>
     </HeaderContainer>
   );
