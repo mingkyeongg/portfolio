@@ -49,7 +49,6 @@ export const FlipCard = ({ front, back }: FlipCardProps) => {
           height: "100%",
           backfaceVisibility: "hidden",
           transform: "rotateY(180deg)",
-          borderRadius: "20px",
         }}
       >
         {back}

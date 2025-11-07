@@ -12,7 +12,7 @@ export const Project = () => {
     <Box
       backgroundColor={colors.background.light}
       width="100%"
-      padding="50px 0"
+      padding="100px 0"
     >
       <PaddedBox>
         <Anchor
@@ -27,7 +27,7 @@ export const Project = () => {
           backgroundColor={colors.background.dark}
         />
         <Box height="36px" />
-        <Grid templateColumns="repeat(2, 1fr)" gap="24px" width="100%" height="100%">
+        <Grid templateColumns="repeat(2, 1fr)" gap="40px" width="100%" height="100%">
           {projectData.map((project: ProjectType) => (
             <FlipCard
               key={project.id}
