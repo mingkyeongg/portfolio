@@ -3,19 +3,27 @@ import { breakpoints } from "@/utils/breakpoints";
 import { colors } from "@/utils/colors";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export const Header = () => {
   const isMobile = useIsMobile();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
   return (
     <HeaderContainer>
-        <HeaderTitle>
-          <Link href="#landing">{isMobile ? "이민경" : "LEE MINKYEONG"}</Link>
-        </HeaderTitle>
-        <HeaderMenu>
-          <HeaderMenuItem href="#about">ABOUT</HeaderMenuItem>
-          <HeaderMenuItem href="#skills">SKILLS</HeaderMenuItem>
-          <HeaderMenuItem href="#projects">PROJECTS</HeaderMenuItem>
-        </HeaderMenu>
+      <HeaderTitle>
+        <Link href="#landing">
+          {!mounted ? "LEE MINKYEONG" : isMobile ? "이민경" : "LEE MINKYEONG"}
+        </Link>
+      </HeaderTitle>
+
+      <HeaderMenu>
+        <HeaderMenuItem href="#about">ABOUT</HeaderMenuItem>
+        <HeaderMenuItem href="#skills">SKILLS</HeaderMenuItem>
+        <HeaderMenuItem href="#projects">PROJECTS</HeaderMenuItem>
+      </HeaderMenu>
     </HeaderContainer>
   );
 };

@@ -42,8 +42,8 @@ export const SkillBox = ({ title, description }: SkillBoxProps) => {
       <Box style={{ padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px", zIndex: 1, backgroundColor: colors.background.dark }}>
         {description.map((item, index) => (
           <HStack key={index} align="flex-start" justify="flex-start" gap="12px">
-            <Icon key={index} as={MdCheckCircle} color={colors.text.cream} marginTop="4px"/>
-            <Text key={index} fontFamily="Pretendard" fontSize="16px" fontWeight="400" style={{ color: colors.text.cream }}>{item}</Text>
+            <Icon key={index + "check"} as={MdCheckCircle} color={colors.text.cream} marginTop="4px"/>
+            <Text key={index + "text"} fontFamily="Pretendard" fontSize="16px" fontWeight="400" style={{ color: colors.text.cream }}>{item}</Text>
           </HStack>
         ))}
       </Box>
