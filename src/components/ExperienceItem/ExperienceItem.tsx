@@ -8,10 +8,9 @@ interface ExperienceItemProps {
   experience: Experience;
 }
 
-export const ExperienceItem = ({ experience }: ExperienceItemProps) => {
+export const ExperienceItem = ({experience}: ExperienceItemProps) => {
   return (
-    <WrapperBox titleColor={experience.titleColor} >
-      
+    <WrapperBox titleColor={experience.titleColor}>
       <Magnetic strength={0.08}>
         <Shadow className="shadow" />
       </Magnetic>
@@ -76,8 +75,8 @@ const Container = styled(Box)`
   }
 
   `;
-  
-  const WrapperBox = styled(Box)<{ titleColor: string }>`
+
+const WrapperBox = styled(Box)<{titleColor: string}>`
   position: relative;
   width: 100%;
   
@@ -86,13 +85,12 @@ const Container = styled(Box)`
     }
     
     &:hover ${Title} {
-      color: ${({ titleColor }) => titleColor};
+      color: ${({titleColor}) => titleColor};
     }
   &:hover ${Shadow} {
-    background-color: ${({ titleColor }) => titleColor};
+    background-color: ${({titleColor}) => titleColor};
   }
 `;
-
 
 const Role = styled(Text)`
   font-size: 16px;
