@@ -1,5 +1,6 @@
 import { CustomCursor } from "@/components/CustomCursor/CustomCursor";
 import { Providers } from "@/components/ui/Provider";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -19,6 +20,7 @@ export default function RootLayout({
         <Providers>
           {children}
           <CustomCursor />
+          <Analytics />
         </Providers>
       </body>
     </html>
