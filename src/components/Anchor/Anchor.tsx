@@ -21,7 +21,7 @@ export const Anchor = ({ text, href, color = colors.background.dark }: AnchorPro
         align="center"
         justify="center"
         borderRadius="30px"
-        fontFamily="Aggravo"
+        fontFamily="var(--font-aggravo-l)"
         padding="10px 20px"
         width="fit-content"
         >

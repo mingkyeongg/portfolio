@@ -20,8 +20,7 @@ const UpText = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) =
     transition={{ duration: 0.5 }}
     style={{
       fontSize: '14vw',
-      fontWeight: 'medium',
-      fontFamily: 'Aggravo',
+      fontFamily: 'var(--font-aggravo-m)',
       color: colors.text.cream,
       x: x,
       opacity: scrollYProgress.get(),
@@ -118,9 +117,7 @@ const LandingContent = styled.div`
 `; 
 
 const LandingContentText = styled.span`
-  font-size: ;
-  font-weight: medium;
   font-size: 15vw;
   color: ${colors.text.cream};
-  font-family: 'Aggravo';
+  font-family: var(--font-aggravo-m);
 `;

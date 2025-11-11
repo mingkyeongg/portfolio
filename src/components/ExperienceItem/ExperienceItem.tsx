@@ -56,8 +56,7 @@ const Shadow = styled.div`
 
 const Title = styled(Text)`
   font-size: 24px;
-  font-weight: 700;
-  font-family: 'Aggravo';
+  font-family: var(--font-aggravo-b);
   color: ${colors.text.black};
   line-height: 1.2;
 

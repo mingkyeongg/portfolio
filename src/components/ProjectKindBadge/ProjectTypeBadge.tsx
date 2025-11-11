@@ -32,7 +32,7 @@ export const ProjectTypeBadge = ({text}: ProjectTypeBadgeProps) => {
       backgroundColor={colorMap[text]}
       borderRadius="100px"
     >
-      <Text fontFamily="Aggravo" fontSize="12px" fontWeight="700" style={{ color: colors.absolute.white, marginTop: "2px" }}>
+      <Text fontFamily="var(--font-aggravo-b)" fontSize="12px" fontWeight="700" style={{ color: colors.absolute.white, marginTop: "2px" }}>
         {textMap[text]}
       </Text>
     </Box>
