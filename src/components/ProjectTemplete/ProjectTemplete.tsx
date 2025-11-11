@@ -76,7 +76,7 @@ export const ProjectFrontCard = ({project}: ProjectFrontCardProps) => {
           )}
         </HStack>
         <HStack align="center" justify="flex-start" gap="12px">
-          <Text fontFamily="Aggravo" fontSize={isMobile ? "20px" : "24px"} fontWeight="600">
+          <Text fontFamily="var(--font-aggravo-b)" fontSize={isMobile ? "20px" : "24px"} fontWeight="600">
             {title}
           </Text>
           <Text
@@ -202,7 +202,7 @@ export const ProjectBackCard = ({project}: ProjectBackCardProps) => {
       </Box>
 
       <Box width="100%" px="24px" py="16px">
-        <Text fontFamily="Aggravo" fontSize={isMobile ? "16px" : "18px"} fontWeight="600" mb="8px">
+        <Text fontFamily="var(--font-aggravo-b)" fontSize={isMobile ? "16px" : "18px"} mb="8px">
           프로젝트 개요
         </Text>
         <Box fontFamily="Pretendard" fontSize={isMobile ? "12px" : "15px"} fontWeight="400">
@@ -212,7 +212,7 @@ export const ProjectBackCard = ({project}: ProjectBackCardProps) => {
         </Box>
       </Box>
       <Box width="100%" px="24px" py="16px" bg="white">
-        <Text fontFamily="Aggravo" fontSize={isMobile ? "16px" : "18px"} fontWeight="600" mb="8px">
+        <Text fontFamily="var(--font-aggravo-b)" fontSize={isMobile ? "16px" : "18px"} mb="8px">
           구현 내용
         </Text>
         <Box padding="0 12px">

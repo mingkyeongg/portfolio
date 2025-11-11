@@ -211,8 +211,7 @@ const Container = styled.div`
 
 const AboutText = styled.div`
   font-size: 32px;
-  font-family: 'Aggravo';
-  font-weight: 300;
+  font-family: var(--font-aggravo-l);
   color: ${colors.text.black};
   line-height: 1.3;
   

@@ -37,7 +37,7 @@ export const SkillBox = ({ title, description }: SkillBoxProps) => {
       <Box
         style={{backgroundColor: colors.background.light, padding: "8px 24px", zIndex: 1 }}
       >
-        <Text fontFamily="Aggravo" fontSize="18px" fontWeight="500">{title}</Text>
+        <Text fontFamily="var(--font-aggravo-m)" fontSize="24px">{title}</Text>
       </Box>
       <Box style={{ padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px", zIndex: 1, backgroundColor: colors.background.dark }}>
         {description.map((item, index) => (

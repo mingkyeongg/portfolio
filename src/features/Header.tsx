@@ -36,14 +36,13 @@ const HeaderContainer = styled.header`
   align-items: center;
   background-color: ${colors.background.dark};
   padding: 40px;
-  font-family: 'Aggravo';
+  font-family: var(--font-aggravo-m);
   color: ${colors.text.cream};
   border-bottom: 4px solid ${colors.text.cream};
 `;
 
 const HeaderTitle = styled.h1`
   font-size: 36px;
-  font-weight: medium;
   
   @media (max-width: ${breakpoints.mobile}px) {
     font-size: 16px;
