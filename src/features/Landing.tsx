@@ -1,4 +1,5 @@
 "use client";
+import { ThreeBackground } from "@/components/ThreeBackground/ThreeBackground";
 import { colors } from "@/utils/colors";
 import styled from "@emotion/styled";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
@@ -82,13 +83,14 @@ export const Landing = () => {
   });
   return (
     <LandingContainer ref={sectionRef}>
+      <ThreeBackground />
       <Header />
-      <LandingContent>
+      {/* <LandingContent>
         <BouncingCircles />
         <LandingContentText>
           <UpText scrollYProgress={scrollYProgress} />
         </LandingContentText>
-      </LandingContent>
+      </LandingContent> */}
     </LandingContainer>
   );
 };
