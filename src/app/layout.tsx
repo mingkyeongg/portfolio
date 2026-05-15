@@ -2,6 +2,7 @@ import { CustomCursor } from "@/components/CustomCursor/CustomCursor";
 import { Providers } from "@/components/ui/Provider";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
+import { JetBrains_Mono } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
 
@@ -9,6 +10,13 @@ export const metadata: Metadata = {
   title: "프론트엔드 개발자 이민경 포트폴리오",
   description: "프론트엔드 개발자 이민경 포트폴리오",
 };
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 const pretendard = LocalFont({
   src: "../fonts/PretendardVariable.woff2",
@@ -43,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${pretendard.variable} ${AggravoLight.variable} ${AggravoMedium.variable} ${AggravoBold.variable} font-sans`}
+        className={`${pretendard.variable} ${AggravoLight.variable} ${AggravoMedium.variable} ${AggravoBold.variable} ${jetbrainsMono.variable} font-sans`}
       >
         <Providers>
           {children}

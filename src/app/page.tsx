@@ -5,6 +5,7 @@ import { Landing } from "@/features/Landing";
 import { Profile } from "@/features/Profile";
 import { Project } from "@/features/Project";
 import { Skills } from "@/features/Skills";
+import { SystemThinking } from "@/features/SystemThinking";
 import { useEffect, useRef } from "react";
 
 export default function Home() {
@@ -61,7 +62,9 @@ export default function Home() {
         ref={(el) => void (sectionsRef.current.projects = el)}
       >
         <Project />
-      </section>  
+      </section>
+
+      <SystemThinking />
 
       <Footer />
     </>

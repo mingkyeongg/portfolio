@@ -1,186 +1,215 @@
 "use client";
-
-import { ExperienceItem } from "@/components/ExperienceItem/ExperienceItem";
 import { PaddedBox } from "@/components/PaddedBox/PaddedBox";
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { breakpoints } from "@/utils/breakpoints";
 import { experienceData } from "@/utils/ExprienceData";
-import { HStack, VStack } from "@chakra-ui/react";
+import { Experience } from "@/types/experience";
 import styled from "@emotion/styled";
-import { motion, useAnimationControls, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
-const AnimatedBox = ({ 
-  children, 
-  index,
-  isLeft 
-}: { 
-  children: React.ReactNode;
-  index: number;
-  isLeft: boolean;
-}) => {
-  const controls = useAnimationControls();
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, {
-    once: true,
-    amount: 0.2,
-  });
+const EASE = [0.175, 0.885, 0.32, 1.275] as const;
 
-  useEffect(() => {
-    if (inView) {
-      controls.start({
-        opacity: 1,
-        x: 0,
-        transition: {
-          duration: 0.6,
-          ease: "easeOut",
-          delay: index * 0.15,
-        },
-      });
-    }
-  }, [controls, inView, index]);
+const ExpRow = function ({ experience, index }: {
+  experience: Experience; index: number;
+}) {
+  const descs = Array.isArray(experience.description)
+    ? experience.description
+    : [experience.description];
 
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-      animate={controls}
-      style={{ width: "100%" }}
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.42, ease: EASE, delay: index * 0.05 }}
     >
-      {children}
+      <ExpCard>
+        <ExpTop>
+          <TitleGroup>
+            <OrgTitle>{experience.title}</OrgTitle>
+            <RoleTag>{experience.role}</RoleTag>
+          </TitleGroup>
+          <PeriodStamp>{experience.period}</PeriodStamp>
+        </ExpTop>
+        <DescList>
+          {descs.map(function (d, i) {
+            return (
+              <DescItem key={i}>
+                <DescDot />
+                {d}
+              </DescItem>
+            );
+          })}
+        </DescList>
+      </ExpCard>
     </motion.div>
   );
 };
 
-export const AboutMe = () => {
-  const isMobile = useIsMobile();
-
-  const MobileLayout = () => {
-    return (
-      <VStack width="100%" gap="40px" position="relative">
-        {experienceData.map((experience, index) => {
-          return (
-            <ExperienceItem key={experience.title} experience={experience} />
-          );
-        })}
-      </VStack>
-    );
-  };
-
-  if (isMobile) {
-    return (
-      <Container>
-        <PaddedBox>
-          <MobileLayout />
-        </PaddedBox>
-      </Container>
-    );
-  }
-
+export const AboutMe = function () {
   return (
-    <Container>
+    <Wrap>
       <PaddedBox>
-        <TimelineContainer>
-          <CenterLine />
+        <Inner>
+          <SectionHeader>
+            <SectionLabel>Experience</SectionLabel>
+            <Title>경력 및 활동</Title>
+          </SectionHeader>
 
-          <VStack width="100%" gap="0" position="relative">
-            {experienceData.map((experience, index) => {
-              const isLeft = index % 2 === 0;
-              
-              return (
-                <TimelineRow key={experience.title} isLeft={isLeft}>
-                  {isLeft ? (
-                    <>
-                      <CardWrapper isLeft={true}>
-                        <AnimatedBox index={index} isLeft={true}>
-                          <ExperienceItem experience={experience} />
-                        </AnimatedBox>
-                      </CardWrapper>
-                      <DotWrapper>
-                        <Dot />
-                        <HorizontalLine />
-                      </DotWrapper>
-                      <CardWrapper isLeft={true} />
-                    </>
-                  ) : (
-                    <>
-                      <CardWrapper isLeft={false}   />
-                      <DotWrapper>
-                        <HorizontalLine />
-                        <Dot />
-                      </DotWrapper>
-                      <CardWrapper isLeft={false}>
-                        <AnimatedBox index={index} isLeft={false}>
-                          <ExperienceItem experience={experience} />
-                        </AnimatedBox>
-                      </CardWrapper>
-                    </>
-                  )}
-                </TimelineRow>
-              );
+          <ExpList>
+            {experienceData.map(function (exp, i) {
+              return <ExpRow key={exp.title} experience={exp} index={i} />;
             })}
-          </VStack>
-        </TimelineContainer>
+          </ExpList>
+        </Inner>
       </PaddedBox>
-    </Container>
+    </Wrap>
   );
 };
 
-const Container = styled.div`
-  min-height: 100vh;
-  padding: 80px 0;
+const Wrap = styled.div`
   width: 100%;
+  background: var(--bg);
+  padding-bottom: 100px;
+`;
+
+const Inner = styled.div`
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
+  gap: 40px;
 `;
 
-const TimelineContainer = styled.div`
+const SectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const SectionLabel = styled.span`
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+`;
+
+const Title = styled.h2`
+  font-size: clamp(36px, 5.5vw, 60px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: var(--fg);
+  text-shadow: 0 1px 0 var(--border-light);
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    font-size: clamp(32px, 9vw, 48px);
+  }
+`;
+
+const ExpList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+/* Industrial experience panel — neumorphic card */
+const ExpCard = styled.div`
   position: relative;
-  width: 100%;
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 24px 28px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-floating);
+    transform: translateY(-1px);
+  }
+
+  /* Corner screw details */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 10px 10px, var(--screw-center) 2px, var(--screw-ring) 3px, transparent 4px),
+      radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), var(--screw-center) 2px, var(--screw-ring) 3px, transparent 4px);
+  }
 `;
 
-const CenterLine = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
+const ExpTop = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+`;
+
+const TitleGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+`;
+
+const OrgTitle = styled.h3`
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+`;
+
+/* Role shown as small accent label */
+const RoleTag = styled.span`
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.8;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255,71,87,0.08);
+`;
+
+const PeriodStamp = styled.span`
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--fg-3);
+  white-space: nowrap;
+  flex-shrink: 0;
+`;
+
+const DescList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+`;
+
+const DescItem = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--fg-2);
+`;
+
+const DescDot = styled.span`
   width: 4px;
-  background-color: black;
-  transform: translateX(-50%);
-`;
-
-const TimelineRow = styled(HStack)<{ isLeft: boolean }>`
-  width: 100%;
-  align-items: center;
-  gap: 0;
-  position: relative;
-`;
-
-const CardWrapper = styled.div<{ isLeft: boolean }>`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  padding: ${({ isLeft }) => isLeft ? "0 24px 0 0" : "0 0 0 24px"};
-  margin-top: -84px;
-`;
-
-const DotWrapper = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  z-index: 2;
-`;
-
-const Dot = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: black;
-  border: 4px solid white;
-  box-shadow: 0 0 0 2px black;
-`;
-
-const HorizontalLine = styled.div`
-  width: 40px;
   height: 4px;
-  background-color: black;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+  margin-top: 7px;
 `;
